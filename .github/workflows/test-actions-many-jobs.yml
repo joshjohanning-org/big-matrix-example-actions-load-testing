@@ -24,3 +24,12 @@ jobs:
 
       - name: echo food
         run: echo ${{ matrix.food }}
+
+      - name: create sample file
+        run: truncate -s 10M foo
+
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: foo-${{ matrix.version }}-${{ matrix.color }}-${{ matrix.food }}
+          path: foo
