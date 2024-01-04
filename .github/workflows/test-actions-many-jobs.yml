@@ -1,0 +1,26 @@
+name: load-test-actions
+
+on:
+  workflow_dispatch:
+
+jobs:
+  load-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # 252 jobs
+        version: [10, 12, 14, 16, 18, 30]
+        color: [blue, red, orange, green, red, yellow]
+        food: [pizza, pasta, tacos, burgers, salad, sushi, cookies]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: echo version
+        run: echo ${{ matrix.version }}
+
+      - name: echo color
+        run: echo ${{ matrix.color }}
+
+      - name: echo food
+        run: echo ${{ matrix.food }}
